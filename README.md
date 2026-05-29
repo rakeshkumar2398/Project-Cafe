@@ -30,6 +30,12 @@ The application consists of:
 
 ---
 
+## Architecture Diagram
+
+![Architecture](docs/architecture-diagram.png)
+
+---
+
 # 🏗️ Architecture
 
 ```text
