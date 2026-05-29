@@ -1,4 +1,3 @@
-sql
 -- =========================================================
 -- Chai Kafe Database Initialization Script
 -- PostgreSQL
