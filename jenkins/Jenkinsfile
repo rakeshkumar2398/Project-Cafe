@@ -7,7 +7,7 @@ pipeline {
     }
 
     environment {
-        DOCKERHUB_USER = 'your-dockerhub-username'
+        DOCKERHUB_USER = 'rakesh2398'
         BACKEND_IMAGE = "${DOCKERHUB_USER}/chai-kafe-backend:latest"
         FRONTEND_IMAGE = "${DOCKERHUB_USER}/chai-kafe-frontend:latest"
     }
