@@ -1,1 +1,13 @@
+.git
+.gitignore
+README.md
+docs/
+monitoring/
+kubernetes/
+jenkins/
 
+**/node_modules
+**/dist
+**/target
+**/*.log
+**/.env
