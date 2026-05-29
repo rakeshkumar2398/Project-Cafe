@@ -34,11 +34,11 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     sh '''
-                    sonar-scanner \
-                    -Dsonar.projectKey=chai-kafe-devops \
-                    -Dsonar.projectName="Chai Kafe DevOps Project" \
-                    -Dsonar.sources=backend/src/main/java,frontend/src \
-                    -Dsonar.java.binaries=backend/target/classes
+                        sonar-scanner \
+                        -Dsonar.projectKey=chai-kafe-devops \
+                        -Dsonar.projectName="Chai Kafe DevOps Project" \
+                        -Dsonar.sources=backend/src/main/java,frontend/src \
+                        -Dsonar.java.binaries=backend/target/classes
                     '''
                 }
             }
@@ -50,6 +50,32 @@ pipeline {
                     waitForQualityGate abortPipeline: false
                 }
             }
+        }
+
+        stage('Trivy File System Scan') {
+            steps {
+                sh 'trivy fs . --format table -o trivy-fs-report.html'
+            }
+        }
+
+        stage('Build Docker Images') {
+            steps {
+                sh 'docker build -t chai-kafe-backend:latest ./backend'
+                sh 'docker build -t chai-kafe-frontend:latest ./frontend'
+            }
+        }
+
+        stage('Trivy Docker Image Scan') {
+            steps {
+                sh 'trivy image chai-kafe-backend:latest --format table -o trivy-backend-image-report.html'
+                sh 'trivy image chai-kafe-frontend:latest --format table -o trivy-frontend-image-report.html'
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'trivy-*.html', allowEmptyArchive: true
         }
     }
 }
