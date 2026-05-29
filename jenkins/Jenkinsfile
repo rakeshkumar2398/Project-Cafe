@@ -6,6 +6,12 @@ pipeline {
         jdk 'JDK17'
     }
 
+    environment {
+        DOCKERHUB_USER = 'your-dockerhub-username'
+        BACKEND_IMAGE = "${DOCKERHUB_USER}/chai-kafe-backend:latest"
+        FRONTEND_IMAGE = "${DOCKERHUB_USER}/chai-kafe-frontend:latest"
+    }
+
     stages {
 
         stage('Checkout') {
@@ -60,15 +66,34 @@ pipeline {
 
         stage('Build Docker Images') {
             steps {
-                sh 'docker build -t chai-kafe-backend:latest ./backend'
-                sh 'docker build -t chai-kafe-frontend:latest ./frontend'
+                sh 'docker build -t $BACKEND_IMAGE ./backend'
+                sh 'docker build -t $FRONTEND_IMAGE ./frontend'
             }
         }
 
         stage('Trivy Docker Image Scan') {
             steps {
-                sh 'trivy image chai-kafe-backend:latest --format table -o trivy-backend-image-report.html'
-                sh 'trivy image chai-kafe-frontend:latest --format table -o trivy-frontend-image-report.html'
+                sh 'trivy image $BACKEND_IMAGE --format table -o trivy-backend-image-report.html'
+                sh 'trivy image $FRONTEND_IMAGE --format table -o trivy-frontend-image-report.html'
+            }
+        }
+
+        stage('DockerHub Login') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub-credentials',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]) {
+                    sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+                }
+            }
+        }
+
+        stage('Push Images to DockerHub') {
+            steps {
+                sh 'docker push $BACKEND_IMAGE'
+                sh 'docker push $FRONTEND_IMAGE'
             }
         }
     }
