@@ -1,4 +1,4 @@
-```sql
+sql
 -- =========================================================
 -- Chai Kafe Database Initialization Script
 -- PostgreSQL
@@ -100,4 +100,3 @@ VALUES
 (NOW(), 'Hot crispy samosa', 'samosa.jpg', true, 'Samosa', 20.00, 100, NOW(), 2)
 
 ON CONFLICT DO NOTHING;
-```
