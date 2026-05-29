@@ -1,1 +1,40 @@
+# Java / Spring Boot
+backend/target/
+*.jar
+*.war
+*.class
 
+# Maven
+.mvn/wrapper/maven-wrapper.jar
+
+# Node / React
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+npm-debug.log*
+
+# Environment / Secrets
+.env
+*.env
+application-local.properties
+application-dev.properties
+application-prod.properties
+
+# Docker
+*.tar
+
+# Logs
+*.log
+logs/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Reports
+trivy-*.html
