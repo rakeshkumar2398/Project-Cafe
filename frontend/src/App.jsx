@@ -35,34 +35,6 @@ function App() {
             Experience rich masala chai, crispy snacks, and quick café ordering
             through a real-time three-tier cloud-native DevOps application.
           </p>
-          <section className="featured-section">
-  <div className="featured-left">
-    <img src="/images/cafe-banner.png" alt="Cafe" />
-  </div>
-
-  <div className="featured-right">
-    <p className="featured-tag">Our Special Experience</p>
-
-    <h2>Premium Café Experience With Cloud-Native Ordering</h2>
-
-    <p>
-      ChaiKafe combines authentic Indian flavors with modern DevOps
-      engineering. Built using React, Spring Boot, PostgreSQL, Docker,
-      Jenkins, SonarQube, Trivy, and AWS.
-    </p>
-
-    <div className="feature-points">
-      <div>☕ Freshly Brewed Chai</div>
-      <div>🚀 Fast API Response</div>
-      <div>🔒 Secure CI/CD Pipeline</div>
-      <div>📦 Dockerized Deployment</div>
-    </div>
-
-    <button className="primary-btn">
-      Explore More
-    </button>
-  </div>
-</section>
 
           <div className="hero-actions">
             <a href="#menu" className="primary-btn">Order Now</a>
@@ -75,6 +47,32 @@ function App() {
           <h3>Today’s Special</h3>
           <p>Masala Chai + Samosa Combo</p>
           <span>₹45 only</span>
+        </div>
+      </section>
+
+      <section className="featured-section">
+        <div className="featured-left">
+          <img src="/images/cafe-banner.png" alt="Cafe" />
+        </div>
+
+        <div className="featured-right">
+          <p className="featured-tag">Our Special Experience</p>
+          <h2>Premium Café Experience With Cloud-Native Ordering</h2>
+
+          <p>
+            ChaiKafe combines authentic Indian flavors with modern DevOps
+            engineering. Built using React, Spring Boot, PostgreSQL, Docker,
+            Jenkins, SonarQube, Trivy, and AWS.
+          </p>
+
+          <div className="feature-points">
+            <div>☕ Freshly Brewed Chai</div>
+            <div>🚀 Fast API Response</div>
+            <div>🔒 Secure CI/CD Pipeline</div>
+            <div>📦 Dockerized Deployment</div>
+          </div>
+
+          <a href="#menu" className="primary-btn">Explore More</a>
         </div>
       </section>
 
