@@ -30,18 +30,21 @@ pipeline {
             }
         }
         stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('SonarQube') {
-                    sh '''
-                    $SONAR_SCANNER_HOME/bin/sonar-scanner \
-                    -Dsonar.projectKey=sonar \
-                    -Dsonar.projectName="Chai Kafe DevOps Project" \
-                    -Dsonar.sources=backend/src/main/java,frontend/src \
-                    -Dsonar.java.binaries=backend/target/classes
-                    '''
-                }
+    steps {
+        script {
+            def scannerHome = tool 'SonarScanner'
+            withSonarQubeEnv('SonarQube') {
+                sh """
+                ${scannerHome}/bin/sonar-scanner \
+                -Dsonar.projectKey=sonar \
+                -Dsonar.projectName="Chai Kafe DevOps Project" \
+                -Dsonar.sources=backend/src/main/java,frontend/src \
+                -Dsonar.java.binaries=backend/target/classes
+                """
             }
         }
+    }
+}
         stage('Trivy File Scan') {
             steps {
                 sh 'trivy fs . --format table -o trivy-fs-report.html'
