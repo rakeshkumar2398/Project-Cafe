@@ -3,6 +3,7 @@ import "./App.css";
 import Menu from "./pages/Menu";
 import Cart from "./pages/Cart";
 import CreateUser from "./pages/CreateUser";
+import Orders from "./pages/Orders";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -20,6 +21,7 @@ function App() {
           <a href="#menu">Menu</a>
           <a href="#cart">Cart</a>
           <a href="#customer">Customer</a>
+          <a href="#orders">Orders</a>
         </div>
 
         <div className="cart-pill">
@@ -67,9 +69,9 @@ function App() {
 
           <div className="feature-points">
             <div>☕ Freshly Brewed Chai</div>
-            <div>🚀 Fast API Response</div>
-            <div>🔒 Secure CI/CD Pipeline</div>
-            <div>📦 Dockerized Deployment</div>
+            <div>🚀 Fresh Sandwiches</div>
+            <div>🔒 Freshly Brewed Coffee ☕</div>
+            <div>📦 Hot & Crispy Snacks</div>
           </div>
 
           <a href="#menu" className="primary-btn">Explore More</a>
@@ -114,35 +116,37 @@ function App() {
         </div>
         <CreateUser />
       </section>
+
       <section className="offers-section">
-  <div className="section-header">
-    <p>Limited Time Deals</p>
-    <h2>Today's Special Offers</h2>
-  </div>
+        <div className="section-header">
+          <p>Limited Time Deals</p>
+          <h2>Today's Special Offers</h2>
+        </div>
 
-  <div className="offers-grid">
-    <div className="offer-card">
-      <div className="offer-badge">20% OFF</div>
-      <h3>Masala Chai Combo</h3>
-      <p>Masala chai + crispy samosa combo with authentic taste.</p>
-      <span>₹45</span>
-    </div>
+        <div className="offers-grid">
+          <div className="offer-card">
+            <div className="offer-badge">20% OFF</div>
+            <h3>Masala Chai Combo</h3>
+            <p>Masala chai + crispy samosa combo with authentic taste.</p>
+            <span>₹45</span>
+          </div>
 
-    <div className="offer-card">
-      <div className="offer-badge">Best Seller</div>
-      <h3>Sandwich Delight</h3>
-      <p>Fresh sandwich with hot ginger tea.</p>
-      <span>₹79</span>
-    </div>
+          <div className="offer-card">
+            <div className="offer-badge">Best Seller</div>
+            <h3>Sandwich Delight</h3>
+            <p>Fresh sandwich with hot ginger tea.</p>
+            <span>₹79</span>
+          </div>
 
-    <div className="offer-card">
-      <div className="offer-badge">Hot Deal</div>
-      <h3>Evening Snack Box</h3>
-      <p>Puff + chai + samosa perfect evening combo.</p>
-      <span>₹99</span>
-    </div>
-  </div>
-</section>
+          <div className="offer-card">
+            <div className="offer-badge">Hot Deal</div>
+            <h3>Evening Snack Box</h3>
+            <p>Puff + chai + samosa perfect evening combo.</p>
+            <span>₹99</span>
+          </div>
+        </div>
+      </section>
+
       <section className="why-section">
         <h2>Why ChaiKafe?</h2>
         <div className="why-grid">
@@ -162,62 +166,67 @@ function App() {
       </section>
 
       <section className="testimonial-section">
-  <div className="section-header">
-    <p>Customer Reviews</p>
-    <h2>What Our Customers Say</h2>
-  </div>
-
-  <div className="testimonial-grid">
-    <div className="testimonial-card">
-      <div className="review-stars">★★★★★</div>
-
-      <p>
-        “Best chai experience I had online. Smooth ordering and beautiful UI.”
-      </p>
-
-      <div className="review-user">
-        <img src="/images/user1.png" alt="User" />
-        <div>
-          <h4>Rahul Sharma</h4>
-          <span>Tea Lover</span>
+        <div className="section-header">
+          <p>Customer Reviews</p>
+          <h2>What Our Customers Say</h2>
         </div>
-      </div>
-    </div>
 
-    <div className="testimonial-card">
-      <div className="review-stars">★★★★★</div>
+        <div className="testimonial-grid">
+          <div className="testimonial-card">
+            <div className="review-stars">★★★★★</div>
+            <p>
+              “Best chai experience I had online. Smooth ordering and beautiful UI.”
+            </p>
 
-      <p>
-        “Authentic snacks and super fast cart experience powered by DevOps.”
-      </p>
+            <div className="review-user">
+              <img src="/images/user1.png" alt="User" />
+              <div>
+                <h4>Rahul Sharma</h4>
+                <span>Tea Lover</span>
+              </div>
+            </div>
+          </div>
 
-      <div className="review-user">
-        <img src="/images/user2.png" alt="User" />
-        <div>
-          <h4>Sneha Reddy</h4>
-          <span>Food Blogger</span>
+          <div className="testimonial-card">
+            <div className="review-stars">★★★★★</div>
+            <p>
+              “Authentic snacks and super fast cart experience powered by DevOps.”
+            </p>
+
+            <div className="review-user">
+              <img src="/images/user2.png" alt="User" />
+              <div>
+                <h4>Sneha Reddy</h4>
+                <span>Food Blogger</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="testimonial-card">
+            <div className="review-stars">★★★★★</div>
+            <p>
+              “Modern café website with real-time deployment and cloud-native setup.”
+            </p>
+
+            <div className="review-user">
+              <img src="/images/user3.png" alt="User" />
+              <div>
+                <h4>Arjun Verma</h4>
+                <span>Software Engineer</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
 
-    <div className="testimonial-card">
-      <div className="review-stars">★★★★★</div>
-
-      <p>
-        “Modern café website with real-time deployment and cloud-native setup.”
-      </p>
-
-      <div className="review-user">
-        <img src="/images/user3.png" alt="User" />
-        <div>
-          <h4>Arjun Verma</h4>
-          <span>Software Engineer</span>
+      <section id="orders" className="section light-section">
+        <div className="section-header">
+          <p>Order Tracking</p>
+          <h2>Customer Orders</h2>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-    
+        <Orders />
+      </section>
+
       <footer className="footer">
         <h3>☕ ChaiKafe</h3>
         <p>End-to-End Three-Tier DevOps Project</p>
