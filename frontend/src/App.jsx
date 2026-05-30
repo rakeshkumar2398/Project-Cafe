@@ -1,26 +1,117 @@
 import { useState } from "react";
+import "./App.css";
 import Menu from "./pages/Menu";
 import Cart from "./pages/Cart";
 import CreateUser from "./pages/CreateUser";
 
 function App() {
   const [cart, setCart] = useState([]);
-  const [currentUser, setCurrentUser] = useState(null);
 
   return (
-    <div>
-      <h1>ChaiKafe ☕</h1>
+    <div className="app">
+      <nav className="navbar">
+        <div className="brand">
+          <span className="brand-icon">☕</span>
+          <span>ChaiKafe</span>
+        </div>
 
-      <CreateUser onUserCreated={setCurrentUser} />
+        <div className="nav-links">
+          <a href="#home">Home</a>
+          <a href="#menu">Menu</a>
+          <a href="#cart">Cart</a>
+          <a href="#customer">Customer</a>
+        </div>
 
-      {currentUser && (
-        <p>
-          Current User: {currentUser.name} (ID: {currentUser.id})
-        </p>
-      )}
+        <div className="cart-pill">
+          Cart: {cart.reduce((total, item) => total + item.quantity, 0)}
+        </div>
+      </nav>
 
-      <Menu cart={cart} setCart={setCart} />
-      <Cart cart={cart} setCart={setCart} currentUser={currentUser} />
+      <section id="home" className="hero">
+        <div className="hero-left">
+          <p className="small-title">Freshly brewed every day</p>
+          <h1>Authentic Indian Chai & Snacks Delivered Hot</h1>
+          <p className="hero-text">
+            Experience rich masala chai, crispy snacks, and quick café ordering
+            through a real-time three-tier cloud-native DevOps application.
+          </p>
+
+          <div className="hero-actions">
+            <a href="#menu" className="primary-btn">Order Now</a>
+            <a href="#customer" className="secondary-btn">Create Account</a>
+          </div>
+        </div>
+
+        <div className="hero-card">
+          <div className="cup">☕</div>
+          <h3>Today’s Special</h3>
+          <p>Masala Chai + Samosa Combo</p>
+          <span>₹45 only</span>
+        </div>
+      </section>
+
+      <section className="stats">
+        <div>
+          <h2>25+</h2>
+          <p>Menu Items</p>
+        </div>
+        <div>
+          <h2>99.9%</h2>
+          <p>App Availability</p>
+        </div>
+        <div>
+          <h2>3-Tier</h2>
+          <p>DevOps Architecture</p>
+        </div>
+      </section>
+
+      <section id="menu" className="section">
+        <div className="section-header">
+          <p>Explore our menu</p>
+          <h2>Popular Chai & Snacks</h2>
+        </div>
+        <Menu cart={cart} setCart={setCart} />
+      </section>
+
+      <section id="cart" className="section light-section">
+        <div className="section-header">
+          <p>Your selected items</p>
+          <h2>Order Cart</h2>
+        </div>
+        <Cart cart={cart} setCart={setCart} />
+      </section>
+
+      <section id="customer" className="section customer-section">
+        <div className="section-header">
+          <p>Join ChaiKafe</p>
+          <h2>Create Customer Account</h2>
+        </div>
+        <CreateUser />
+      </section>
+
+      <section className="why-section">
+        <h2>Why ChaiKafe?</h2>
+        <div className="why-grid">
+          <div>
+            <h3>☕ Fresh Chai</h3>
+            <p>Every cup is brewed with authentic Indian flavors.</p>
+          </div>
+          <div>
+            <h3>⚡ Fast Orders</h3>
+            <p>Real-time menu and cart experience powered by APIs.</p>
+          </div>
+          <div>
+            <h3>🚀 DevOps Ready</h3>
+            <p>Docker, Jenkins, SonarQube, Trivy, and cloud deployment.</p>
+          </div>
+        </div>
+      </section>
+
+      <footer className="footer">
+        <h3>☕ ChaiKafe</h3>
+        <p>End-to-End Three-Tier DevOps Project</p>
+        <p>Built with React, Spring Boot, PostgreSQL, Docker, Jenkins and AWS.</p>
+      </footer>
     </div>
   );
 }
