@@ -43,7 +43,7 @@ function Cart({ cart, setCart }) {
     };
 
     try {
-      await api.post("/orders", orderData);
+      await api.post("/api/orders", orderData);
       setMessage("Order placed successfully!");
       setCart([]);
       setUserId("");
