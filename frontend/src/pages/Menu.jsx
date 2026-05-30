@@ -8,7 +8,7 @@ function Menu({ cart, setCart }) {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    api.get("/menu-items")
+    api.get("/api/menu-items")
       .then((response) => {
         setItems(response.data);
         setLoading(false);
