@@ -7,7 +7,7 @@ function Menu({ cart, setCart }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api.get("/api/menu-items")
+    api.get("/menu-items")
       .then((response) => {
         setItems(response.data);
         setLoading(false);
