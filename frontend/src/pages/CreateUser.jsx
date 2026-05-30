@@ -24,7 +24,7 @@ function CreateUser() {
     e.preventDefault();
 
     try {
-      await api.post("/api/users", user);
+      await api.post("/users", user);
       setMessage("Customer created successfully!");
       setUser({
         name: "",
