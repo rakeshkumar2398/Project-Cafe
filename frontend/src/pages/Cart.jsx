@@ -1,6 +1,11 @@
+import { useState } from "react";
+import api from "../services/api";
 import "./Cart.css";
 
 function Cart({ cart, setCart }) {
+  const [userId, setUserId] = useState("");
+  const [message, setMessage] = useState("");
+
   const increaseQuantity = (id) => {
     setCart(
       cart.map((item) =>
@@ -21,6 +26,31 @@ function Cart({ cart, setCart }) {
 
   const removeItem = (id) => {
     setCart(cart.filter((item) => item.id !== id));
+  };
+
+  const placeOrder = async () => {
+    if (!userId) {
+      setMessage("Please enter customer ID before placing order.");
+      return;
+    }
+
+    const orderData = {
+      userId: Number(userId),
+      items: cart.map((item) => ({
+        menuItemId: item.id,
+        quantity: item.quantity
+      }))
+    };
+
+    try {
+      await api.post("/orders", orderData);
+      setMessage("Order placed successfully!");
+      setCart([]);
+      setUserId("");
+    } catch (error) {
+      console.error("Error placing order:", error);
+      setMessage("Failed to place order.");
+    }
   };
 
   const total = cart.reduce(
@@ -70,6 +100,14 @@ function Cart({ cart, setCart }) {
       <div className="cart-summary">
         <h3>Order Summary</h3>
 
+        <input
+          type="number"
+          placeholder="Enter Customer ID"
+          value={userId}
+          onChange={(e) => setUserId(e.target.value)}
+          className="customer-id-input"
+        />
+
         <div className="summary-row">
           <span>Items</span>
           <span>{cart.reduce((sum, item) => sum + item.quantity, 0)}</span>
@@ -80,7 +118,11 @@ function Cart({ cart, setCart }) {
           <strong>₹{total}</strong>
         </div>
 
-        <button className="checkout-btn">Proceed to Checkout</button>
+        <button className="checkout-btn" onClick={placeOrder}>
+          Place Order
+        </button>
+
+        {message && <p className="cart-message">{message}</p>}
       </div>
     </div>
   );
