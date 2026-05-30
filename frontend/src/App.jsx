@@ -160,6 +160,63 @@ function App() {
           </div>
         </div>
       </section>
+
+      <section className="testimonial-section">
+  <div className="section-header">
+    <p>Customer Reviews</p>
+    <h2>What Our Customers Say</h2>
+  </div>
+
+  <div className="testimonial-grid">
+    <div className="testimonial-card">
+      <div className="review-stars">★★★★★</div>
+
+      <p>
+        “Best chai experience I had online. Smooth ordering and beautiful UI.”
+      </p>
+
+      <div className="review-user">
+        <img src="/images/user1.png" alt="User" />
+        <div>
+          <h4>Rahul Sharma</h4>
+          <span>Tea Lover</span>
+        </div>
+      </div>
+    </div>
+
+    <div className="testimonial-card">
+      <div className="review-stars">★★★★★</div>
+
+      <p>
+        “Authentic snacks and super fast cart experience powered by DevOps.”
+      </p>
+
+      <div className="review-user">
+        <img src="/images/user2.png" alt="User" />
+        <div>
+          <h4>Sneha Reddy</h4>
+          <span>Food Blogger</span>
+        </div>
+      </div>
+    </div>
+
+    <div className="testimonial-card">
+      <div className="review-stars">★★★★★</div>
+
+      <p>
+        “Modern café website with real-time deployment and cloud-native setup.”
+      </p>
+
+      <div className="review-user">
+        <img src="/images/user3.png" alt="User" />
+        <div>
+          <h4>Arjun Verma</h4>
+          <span>Software Engineer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
     
       <footer className="footer">
         <h3>☕ ChaiKafe</h3>
