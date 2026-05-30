@@ -2,7 +2,7 @@ package com.devops.chaikafe.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -14,10 +14,6 @@ import java.time.LocalDateTime;
 @Builder
 public class User {
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<OrderItem> orderItems;
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
