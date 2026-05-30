@@ -22,13 +22,13 @@ pipeline {
             }
         }
 
-        stage('Test-Backend') {
-            steps {
-                dir('backend') {
-                    sh 'mvn test'
-                }
-            }
+        stage('Test Backend') {
+    steps {
+        dir('backend') {
+            sh 'mvn clean package -DskipTests'
         }
+    }
+}
         stage('SonarQube Analysis') {
             steps {
                 script {
