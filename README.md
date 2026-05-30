@@ -211,7 +211,7 @@ Shows frontend, backend, and PostgreSQL containers running successfully using Do
 
 Frontend and backend Docker images pushed successfully to DockerHub.
 
-![DockerHub](docs/images/Docker hub.png)
+![DockerHub](docs/images/Dockerhub.png)
 
 ---
 
