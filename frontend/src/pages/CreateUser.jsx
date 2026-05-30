@@ -1,68 +1,78 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../services/api";
+import "./CreateUser.css";
 
-function CreateUser({ onUserCreated }) {
+function CreateUser() {
   const [user, setUser] = useState({
     name: "",
     email: "",
     password: "",
-    role: "CUSTOMER",
     phone: "",
-    address: "",
+    address: ""
   });
 
+  const [message, setMessage] = useState("");
+
   const handleChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value
+    });
   };
 
-  const handleSubmit = async (e) => {
+  const createUser = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8080/api/users", user);
-      alert("User created successfully");
-
-      if (onUserCreated) {
-        onUserCreated(response.data);
-      }
-
+      await api.post("/api/users", user);
+      setMessage("Customer created successfully!");
       setUser({
         name: "",
         email: "",
         password: "",
-        role: "CUSTOMER",
         phone: "",
-        address: "",
+        address: ""
       });
     } catch (error) {
       console.error("Error creating user:", error);
-      alert("Failed to create user");
+      setMessage("Failed to create customer.");
     }
   };
 
   return (
-    <div style={{ marginBottom: "20px" }}>
-      <h2>Create User</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="customer-wrapper">
+      <div className="customer-info">
+        <h3>Join the ChaiKafe Family</h3>
+        <p>
+          Create your customer account to order your favorite chai, snacks,
+          and café combos quickly.
+        </p>
+
+        <div className="benefits">
+          <span>☕ Fast ordering</span>
+          <span>🛒 Easy cart management</span>
+          <span>🚀 Real-time backend API</span>
+        </div>
+      </div>
+
+      <form className="customer-form" onSubmit={createUser}>
         <input
           type="text"
           name="name"
-          placeholder="Name"
+          placeholder="Full Name"
           value={user.name}
           onChange={handleChange}
           required
         />
-        <br /><br />
 
         <input
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder="Email Address"
           value={user.email}
           onChange={handleChange}
           required
         />
-        <br /><br />
 
         <input
           type="password"
@@ -72,27 +82,25 @@ function CreateUser({ onUserCreated }) {
           onChange={handleChange}
           required
         />
-        <br /><br />
 
         <input
           type="text"
           name="phone"
-          placeholder="Phone"
+          placeholder="Phone Number"
           value={user.phone}
           onChange={handleChange}
         />
-        <br /><br />
 
-        <input
-          type="text"
+        <textarea
           name="address"
-          placeholder="Address"
+          placeholder="Delivery Address"
           value={user.address}
           onChange={handleChange}
         />
-        <br /><br />
 
-        <button type="submit">Create User</button>
+        <button type="submit">Create Customer</button>
+
+        {message && <p className="form-message">{message}</p>}
       </form>
     </div>
   );
