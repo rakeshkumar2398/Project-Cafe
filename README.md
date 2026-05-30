@@ -203,7 +203,7 @@ Add screenshots for:
 
 Shows frontend, backend, and PostgreSQL containers running successfully using Docker Compose.
 
-![Docker Containers](docs/images/container.png)
+![Docker Containers](docs/images/containers.png)
 
 ---
 
