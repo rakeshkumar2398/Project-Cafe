@@ -5,14 +5,22 @@ import "./Orders.css";
 function Orders() {
   const [orders, setOrders] = useState([]);
 
-  useEffect(() => {
+  const fetchOrders = () => {
     api.get("/orders")
       .then((response) => setOrders(response.data))
       .catch((error) => console.error("Error fetching orders:", error));
+  };
+
+  useEffect(() => {
+    fetchOrders();
   }, []);
 
   return (
     <div className="orders-wrapper">
+      <div className="orders-actions">
+        <button onClick={fetchOrders}>Refresh Orders</button>
+      </div>
+
       {orders.length === 0 ? (
         <p className="orders-message">No orders available.</p>
       ) : (
