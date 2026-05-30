@@ -211,7 +211,7 @@ Shows frontend, backend, and PostgreSQL containers running successfully using Do
 
 Frontend and backend Docker images pushed successfully to DockerHub.
 
-![DockerHub](docs/images/dockerhub.png)
+![DockerHub](docs/images/Docker hub.png)
 
 ---
 
@@ -219,7 +219,7 @@ Frontend and backend Docker images pushed successfully to DockerHub.
 
 Live ChaiKafe application UI running successfully with customer ordering workflow.
 
-![Application Output](docs/images/output.png)
+![Application Output](docs/images/Output.png)
 
 ---
 
@@ -227,7 +227,7 @@ Live ChaiKafe application UI running successfully with customer ordering workflo
 
 Container vulnerability scanning using Trivy integrated into Jenkins CI/CD pipeline.
 
-![Trivy Report](docs/images/trivy report.png)
+![Trivy Report](docs/images/trivyreport.png)
 
 ---
 
