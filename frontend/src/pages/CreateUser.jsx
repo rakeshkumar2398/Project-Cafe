@@ -33,7 +33,7 @@ function CreateUser() {
     };
 
     try {
-      await api.post("/users", userData);
+      await api.post("/api/users", userData);
       setMessage("Customer created successfully!");
 
       setUser({
