@@ -2,7 +2,7 @@ package com.devops.chaikafe.entity;
 import java.math.BigDecimal;
 import jakarta.persistence.*;
 import lombok.*;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 @Entity
 @Table(name = "order_items")
 @Getter
@@ -20,6 +20,7 @@ public class OrderItem {
 
     private BigDecimal price;;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
