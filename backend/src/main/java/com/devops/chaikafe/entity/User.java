@@ -18,6 +18,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "full_name", nullable = false)
+    private String fullName;
+
     @Column(nullable = false)
     private String name;
 
@@ -42,10 +45,22 @@ public class User {
     public void prePersist() {
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
+
+        if (this.fullName == null || this.fullName.isEmpty()) {
+            this.fullName = this.name;
+        }
+
+        if (this.role == null || this.role.isEmpty()) {
+            this.role = "CUSTOMER";
+        }
     }
 
     @PreUpdate
     public void preUpdate() {
         this.updatedAt = LocalDateTime.now();
+
+        if (this.fullName == null || this.fullName.isEmpty()) {
+            this.fullName = this.name;
+        }
     }
 }
