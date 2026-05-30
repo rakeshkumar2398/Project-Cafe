@@ -5,6 +5,7 @@ import "./Menu.css";
 function Menu({ cart, setCart }) {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     api.get("/menu-items")
@@ -35,6 +36,10 @@ function Menu({ cart, setCart }) {
     return images[name] || "chai.png";
   };
 
+  const filteredItems = items.filter((item) =>
+    item.name.toLowerCase().includes(search.toLowerCase())
+  );
+
   const addToCart = (item) => {
     const existingItem = cart.find((cartItem) => cartItem.id === item.id);
 
@@ -61,36 +66,50 @@ function Menu({ cart, setCart }) {
 
   return (
     <div className="menu-wrapper">
-      <div className="menu-grid">
-        {items.map((item) => (
-          <div className="menu-card" key={item.id}>
-            <img
-              src={`/images/${getImage(item.name)}`}
-              alt={item.name}
-              className="menu-image"
-            />
-
-            <h3>{item.name}</h3>
-
-            <p className="menu-description">{item.description}</p>
-
-            <div className="menu-meta">
-              <span className="price">₹{item.price}</span>
-              <span className={item.isAvailable ? "available" : "unavailable"}>
-                {item.isAvailable ? "Available" : "Unavailable"}
-              </span>
-            </div>
-
-            <button
-              className={item.isAvailable ? "add-btn" : "disabled-btn"}
-              onClick={() => addToCart(item)}
-              disabled={!item.isAvailable}
-            >
-              {item.isAvailable ? "Add to Cart" : "Unavailable"}
-            </button>
-          </div>
-        ))}
+      <div className="menu-topbar">
+        <input
+          type="text"
+          placeholder="Search chai or snacks..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="search-box"
+        />
       </div>
+
+      {filteredItems.length === 0 ? (
+        <p className="menu-message">No items matched your search.</p>
+      ) : (
+        <div className="menu-grid">
+          {filteredItems.map((item) => (
+            <div className="menu-card" key={item.id}>
+              <img
+                src={`/images/${getImage(item.name)}`}
+                alt={item.name}
+                className="menu-image"
+              />
+
+              <h3>{item.name}</h3>
+
+              <p className="menu-description">{item.description}</p>
+
+              <div className="menu-meta">
+                <span className="price">₹{item.price}</span>
+                <span className={item.isAvailable ? "available" : "unavailable"}>
+                  {item.isAvailable ? "Available" : "Unavailable"}
+                </span>
+              </div>
+
+              <button
+                className={item.isAvailable ? "add-btn" : "disabled-btn"}
+                onClick={() => addToCart(item)}
+                disabled={!item.isAvailable}
+              >
+                {item.isAvailable ? "Add to Cart" : "Unavailable"}
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
