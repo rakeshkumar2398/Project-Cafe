@@ -6,7 +6,7 @@ function Orders() {
   const [orders, setOrders] = useState([]);
 
   const fetchOrders = () => {
-    api.get("/orders")
+    api.get("/api/orders")
       .then((response) => setOrders(response.data))
       .catch((error) => console.error("Error fetching orders:", error));
   };
