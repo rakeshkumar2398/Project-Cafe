@@ -243,7 +243,7 @@ Static code analysis and quality inspection results generated using Sonar Scanne
 
 Code quality gates, issues, coverage, and security hotspots monitored in SonarQube.
 
-![SonarQube Dashboard](docs/images/sonarqube.png)
+![SonarQube Dashboard](docs/images/soanrqube.png)
 
 ---
 
