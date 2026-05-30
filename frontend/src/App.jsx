@@ -114,7 +114,35 @@ function App() {
         </div>
         <CreateUser />
       </section>
+      <section className="offers-section">
+  <div className="section-header">
+    <p>Limited Time Deals</p>
+    <h2>Today's Special Offers</h2>
+  </div>
 
+  <div className="offers-grid">
+    <div className="offer-card">
+      <div className="offer-badge">20% OFF</div>
+      <h3>Masala Chai Combo</h3>
+      <p>Masala chai + crispy samosa combo with authentic taste.</p>
+      <span>₹45</span>
+    </div>
+
+    <div className="offer-card">
+      <div className="offer-badge">Best Seller</div>
+      <h3>Sandwich Delight</h3>
+      <p>Fresh sandwich with hot ginger tea.</p>
+      <span>₹79</span>
+    </div>
+
+    <div className="offer-card">
+      <div className="offer-badge">Hot Deal</div>
+      <h3>Evening Snack Box</h3>
+      <p>Puff + chai + samosa perfect evening combo.</p>
+      <span>₹99</span>
+    </div>
+  </div>
+</section>
       <section className="why-section">
         <h2>Why ChaiKafe?</h2>
         <div className="why-grid">
@@ -132,7 +160,7 @@ function App() {
           </div>
         </div>
       </section>
-
+    
       <footer className="footer">
         <h3>☕ ChaiKafe</h3>
         <p>End-to-End Three-Tier DevOps Project</p>
