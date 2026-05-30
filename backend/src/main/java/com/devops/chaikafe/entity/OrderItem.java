@@ -1,5 +1,5 @@
 package com.devops.chaikafe.entity;
-
+import java.math.BigDecimal;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,7 +18,7 @@ public class OrderItem {
 
     private Integer quantity;
 
-    private Double price;
+    private BigDecimal price;;
 
     @ManyToOne
     @JoinColumn(name = "order_id")
