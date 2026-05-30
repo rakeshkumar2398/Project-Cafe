@@ -105,3 +105,25 @@
   border-radius: 28px;
   cursor: not-allowed;
 }
+.menu-topbar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 35px;
+}
+
+.search-box {
+  width: 420px;
+  max-width: 100%;
+  padding: 16px 22px;
+  border-radius: 40px;
+  border: 1px solid #ead7c0;
+  background: white;
+  font-size: 16px;
+  box-shadow: 0 10px 25px rgba(60,30,10,0.08);
+  outline: none;
+}
+
+.search-box:focus {
+  border-color: #d97706;
+  box-shadow: 0 0 0 4px rgba(217,119,6,0.15);
+}
