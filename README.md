@@ -197,12 +197,53 @@ Monitoring stack includes:
 
 Add screenshots for:
 
-* Jenkins Pipeline
-* SonarQube Dashboard
-* Trivy Reports
-* Docker Containers
-* Kubernetes Pods
-* Grafana Dashboard
+## 📸 Project Screenshots
+
+### 🐳 Docker Containers Running
+
+Shows frontend, backend, and PostgreSQL containers running successfully using Docker Compose.
+
+![Docker Containers](docs/images/container.png)
+
+---
+
+### ☁️ DockerHub Images
+
+Frontend and backend Docker images pushed successfully to DockerHub.
+
+![DockerHub](docs/images/dockerhub.png)
+
+---
+
+### 🚀 Application Output
+
+Live ChaiKafe application UI running successfully with customer ordering workflow.
+
+![Application Output](docs/images/output.png)
+
+---
+
+### 🔐 Trivy Security Scan Report
+
+Container vulnerability scanning using Trivy integrated into Jenkins CI/CD pipeline.
+
+![Trivy Report](docs/images/trivy report.png)
+
+---
+
+### 📊 Sonar Analysis Report
+
+Static code analysis and quality inspection results generated using Sonar Scanner.
+
+![Sonar Report](docs/images/sonar.png)
+
+---
+
+### 🔎 SonarQube Dashboard
+
+Code quality gates, issues, coverage, and security hotspots monitored in SonarQube.
+
+![SonarQube Dashboard](docs/images/sonarqube.png)
 
 ---
 
@@ -227,6 +268,61 @@ kubectl rollout restart deployment backend -n chai-kafe
 ```
 
 ---
+# 🎨 Modern ChaiKafe UI Screenshots
+
+## 🏠 Landing Page UI
+
+Modern cloud-native café landing page with responsive hero section and premium design.
+
+![Landing Page](docs/images/ui-1.png)
+
+---
+
+## ☕ Home Page
+
+Beautiful homepage showcasing authentic Indian chai experience and DevOps-powered ordering platform.
+
+![Home Page](docs/images/home.png)
+
+---
+
+## 🚀 Enhanced Home Experience
+
+Advanced UI section with featured offers, responsive layouts, and café branding.
+
+![Enhanced Home](docs/images/Home1.png)
+
+---
+
+## 📋 Interactive Menu Section
+
+Dynamic menu items loaded from Spring Boot REST APIs with real-time cart integration.
+
+![Menu](docs/images/menu.png)
+
+---
+
+## 🛒 Shopping Cart & Checkout
+
+Customer cart management with quantity controls and real-time order summary.
+
+![Cart](docs/images/cart.png)
+
+---
+
+## 🎁 Special Offers Section
+
+Modern promotional cards showcasing café combo offers and featured snacks.
+
+![Offer Menu](docs/images/offermenu'.png)
+
+---
+
+## 📦 Customer Orders Dashboard
+
+Real-time order tracking displaying customer details, ordered items, quantities, and total bill amount.
+
+![Orders](docs/images/orders.png)
 
 # 👨‍💻 Author
 
