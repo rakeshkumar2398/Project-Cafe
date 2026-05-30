@@ -34,7 +34,7 @@ pipeline {
                 withSonarQubeEnv('SonarQube') {
                     sh '''
                     sonar-scanner \
-                    -Dsonar.projectKey=chai-kafe-devops \
+                    -Dsonar.projectKey=sonar \
                     -Dsonar.projectName="Chai Kafe DevOps Project" \
                     -Dsonar.sources=backend/src/main/java,frontend/src \
                     -Dsonar.java.binaries=backend/target/classes
