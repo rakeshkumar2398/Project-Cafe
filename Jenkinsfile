@@ -33,7 +33,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     sh '''
-                    SonarScanner \
+                    $SONAR_SCANNER_HOME/bin/sonar-scanner \
                     -Dsonar.projectKey=sonar \
                     -Dsonar.projectName="Chai Kafe DevOps Project" \
                     -Dsonar.sources=backend/src/main/java,frontend/src \
