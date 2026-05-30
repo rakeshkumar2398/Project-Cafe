@@ -3,7 +3,6 @@ package com.devops.chaikafe.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,44 +19,25 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private LocalDateTime orderDate;
+    private Double totalAmount;
 
-    @Column(nullable = false)
-    private String status; // PLACED, PREPARING, COMPLETED, CANCELLED
-
-    @Column(nullable = false)
-    private BigDecimal totalAmount;
-
-    private String deliveryType; // DINE_IN, TAKEAWAY, DELIVERY
+    private String orderStatus;
 
     private LocalDateTime createdAt;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems;
-
-    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
-    private Payment payment;
 
     @PrePersist
     public void prePersist() {
-        this.orderDate = LocalDateTime.now();
         this.createdAt = LocalDateTime.now();
 
-        if (this.status == null) {
-            this.status = "PLACED";
-        }
-
-        if (this.deliveryType == null) {
-            this.deliveryType = "TAKEAWAY";
-        }
-
-        if (this.totalAmount == null) {
-            this.totalAmount = BigDecimal.ZERO;
+        if (this.orderStatus == null || this.orderStatus.isEmpty()) {
+            this.orderStatus = "PENDING";
         }
     }
 }
