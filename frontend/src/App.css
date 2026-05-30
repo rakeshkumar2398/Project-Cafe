@@ -381,3 +381,63 @@ button {
 .hero-card {
   animation: floatCard 4s ease-in-out infinite;
 }
+.offers-section {
+  padding: 90px 7%;
+  background: linear-gradient(135deg, #fff7ed, #fff);
+}
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.offer-card {
+  background: white;
+  border-radius: 28px;
+  padding: 35px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(60,30,10,0.1);
+  transition: 0.3s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-8px);
+}
+
+.offer-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: #d97706;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.offer-card h3 {
+  font-size: 30px;
+  color: #4b260f;
+  margin-bottom: 18px;
+}
+
+.offer-card p {
+  color: #6b5b4b;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.offer-card span {
+  font-size: 34px;
+  font-weight: 900;
+  color: #d97706;
+}
+
+@media (max-width: 900px) {
+  .offers-grid {
+    grid-template-columns: 1fr;
+  }
+}
