@@ -18,6 +18,23 @@ function Menu({ cart, setCart }) {
       });
   }, []);
 
+  const getImage = (name) => {
+    const images = {
+      "Masala Chai": "masala-chai.png",
+      "Ginger Tea": "chai.png",
+      "Green Tea": "chai.png",
+      "Badam Tea": "chai.png",
+      "Honey Tea": "chai.png",
+      "Samosa": "samosa.png",
+      "Veg Sandwich": "sand.png",
+      "Cheese Sandwich": "sand.png",
+      "Paneer Sandwich": "sand.png",
+      "Veg Puff": "chai-samosa.png"
+    };
+
+    return images[name] || "chai.png";
+  };
+
   const addToCart = (item) => {
     const existingItem = cart.find((cartItem) => cartItem.id === item.id);
 
@@ -47,7 +64,11 @@ function Menu({ cart, setCart }) {
       <div className="menu-grid">
         {items.map((item) => (
           <div className="menu-card" key={item.id}>
-            <div className="menu-icon">☕</div>
+            <img
+              src={`/images/${getImage(item.name)}`}
+              alt={item.name}
+              className="menu-image"
+            />
 
             <h3>{item.name}</h3>
 
