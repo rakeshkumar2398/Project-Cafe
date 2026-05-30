@@ -56,6 +56,18 @@
   margin-bottom: 14px;
   color: #4b260f;
 }
+.orders-actions {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.orders-actions button {
+  background: linear-gradient(135deg, #8b4513, #d97706);
+  color: white;
+  padding: 13px 28px;
+  border-radius: 30px;
+  font-weight: 900;
+}
 
 .order-item {
   display: flex;
