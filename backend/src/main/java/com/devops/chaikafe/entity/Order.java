@@ -1,5 +1,5 @@
 package com.devops.chaikafe.entity;
-
+import java.math.BigDecimal;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,7 +19,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Double totalAmount;
+    private BigDecimal totalAmount;
 
     private String orderStatus;
 
