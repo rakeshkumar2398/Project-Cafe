@@ -149,3 +149,19 @@
     justify-content: center;
   }
 }
+.customer-id-input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: none;
+  outline: none;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.cart-message {
+  margin-top: 16px;
+  text-align: center;
+  color: #ffd166;
+  font-weight: 800;
+}
