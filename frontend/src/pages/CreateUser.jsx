@@ -23,9 +23,19 @@ function CreateUser() {
   const createUser = async (e) => {
     e.preventDefault();
 
+    const userData = {
+      fullName: user.name,
+      name: user.name,
+      email: user.email,
+      password: user.password,
+      phone: user.phone,
+      address: user.address
+    };
+
     try {
-      await api.post("/users", user);
+      await api.post("/users", userData);
       setMessage("Customer created successfully!");
+
       setUser({
         name: "",
         email: "",
