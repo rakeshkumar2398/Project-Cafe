@@ -12,6 +12,7 @@ import com.devops.chaikafe.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class OrderService {
         order.setOrderStatus("PENDING");
 
         List<OrderItem> orderItems = new ArrayList<>();
-        double totalAmount = 0.0;
+        BigDecimal totalAmount = BigDecimal.ZERO;
 
         for (OrderItemRequest itemRequest : request.getItems()) {
             MenuItem menuItem = menuItemRepository.findById(itemRequest.getMenuItemId())
@@ -44,7 +45,11 @@ public class OrderService {
             orderItem.setQuantity(itemRequest.getQuantity());
             orderItem.setPrice(menuItem.getPrice());
 
-            totalAmount += menuItem.getPrice() * itemRequest.getQuantity();
+            BigDecimal itemTotal = menuItem.getPrice()
+                    .multiply(BigDecimal.valueOf(itemRequest.getQuantity()));
+
+            totalAmount = totalAmount.add(itemTotal);
+
             orderItems.add(orderItem);
         }
 
