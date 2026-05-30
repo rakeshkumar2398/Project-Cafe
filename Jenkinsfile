@@ -33,7 +33,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     sh '''
-                    sonar-scanner \
+                    SonarScanner \
                     -Dsonar.projectKey=sonar \
                     -Dsonar.projectName="Chai Kafe DevOps Project" \
                     -Dsonar.sources=backend/src/main/java,frontend/src \
