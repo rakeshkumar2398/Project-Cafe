@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
+import "./Menu.css";
 
 function Menu({ cart, setCart }) {
   const [items, setItems] = useState([]);
@@ -21,66 +22,48 @@ function Menu({ cart, setCart }) {
     const existingItem = cart.find((cartItem) => cartItem.id === item.id);
 
     if (existingItem) {
-      const updatedCart = cart.map((cartItem) =>
-        cartItem.id === item.id
-          ? { ...cartItem, quantity: cartItem.quantity + 1 }
-          : cartItem
+      setCart(
+        cart.map((cartItem) =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            : cartItem
+        )
       );
-      setCart(updatedCart);
     } else {
       setCart([...cart, { ...item, quantity: 1 }]);
     }
   };
 
+  if (loading) {
+    return <p className="menu-message">Loading menu items...</p>;
+  }
+
+  if (!loading && items.length === 0) {
+    return <p className="menu-message">No menu items available.</p>;
+  }
+
   return (
-    <div style={{ marginTop: "30px" }}>
-      <h2 style={{ marginBottom: "20px" }}>Menu</h2>
-
-      {loading && <p>Loading menu items...</p>}
-
-      {!loading && items.length === 0 && <p>No menu items available.</p>}
-
-      <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+    <div className="menu-wrapper">
+      <div className="menu-grid">
         {items.map((item) => (
-          <div
-            key={item.id}
-            style={{
-              border: "1px solid #ddd",
-              borderRadius: "12px",
-              padding: "16px",
-              width: "240px",
-              backgroundColor: "#fffaf5",
-              boxShadow: "0 3px 8px rgba(0,0,0,0.08)"
-            }}
-          >
-            <h3 style={{ marginBottom: "10px", color: "#5c2e00" }}>
-              {item.name}
-            </h3>
+          <div className="menu-card" key={item.id}>
+            <div className="menu-icon">☕</div>
 
-            <p style={{ minHeight: "40px", color: "#555" }}>
-              {item.description}
-            </p>
+            <h3>{item.name}</h3>
 
-            <p style={{ fontWeight: "bold", marginBottom: "8px" }}>
-              Price: ₹{item.price}
-            </p>
+            <p className="menu-description">{item.description}</p>
 
-            <p style={{ marginBottom: "12px" }}>
-              {item.isAvailable ? "Available" : "Not Available"}
-            </p>
+            <div className="menu-meta">
+              <span className="price">₹{item.price}</span>
+              <span className={item.isAvailable ? "available" : "unavailable"}>
+                {item.isAvailable ? "Available" : "Unavailable"}
+              </span>
+            </div>
 
             <button
+              className={item.isAvailable ? "add-btn" : "disabled-btn"}
               onClick={() => addToCart(item)}
               disabled={!item.isAvailable}
-              style={{
-                padding: "10px 14px",
-                backgroundColor: item.isAvailable ? "#8b4513" : "#999",
-                color: "white",
-                border: "none",
-                borderRadius: "6px",
-                cursor: item.isAvailable ? "pointer" : "not-allowed",
-                width: "100%"
-              }}
             >
               {item.isAvailable ? "Add to Cart" : "Unavailable"}
             </button>
