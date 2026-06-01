@@ -1,4 +1,4 @@
-# Chai Kafe Monitoring Setup
+# Chai cafe Monitoring Setup
 
 ## Tools Used
 
